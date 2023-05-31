@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>ANR POSTURE</title>
+		<link rel="stylesheet" href="./Reveal/multiCol.css">
+		<link rel="stylesheet" href="./Reveal/reveal.css">
+		<link rel="stylesheet" href="./Reveal/theme/white.css">
+		<link rel="stylesheet" href="./Reveal/highlight/monokai.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides" id="slides">
+
+				<section data-external="./Slides/0_title.html" data-visibility="uncounted"></section>
+				<section data-external="./Slides/1_projet.html"></section>
+				<section data-external="./Slides/2_51-53.html"></section>
+				<section data-external="./Slides/3_52.html" id="3_52"></section>
+				<!-- <section id="7_CMap0" data-external="./Slides/7_CMap0.html"></section> -->
+
+			</div>
+		</div>
+
+		<script type="module">
+			import Reveal from './Reveal/reveal.esm.js'
+
+			import Slide from './Slides/Slide.js';
+			import {slide_52} from './Slides/3_52.js';
+
+			import RevealNotes from './Reveal/notes/notes.esm.js'
+			import RevealMath from './Reveal/math/math.esm.js'
+			import RevealHighlight from './Reveal/highlight/highlight.esm.js'
+			import RevealMarkdown from './Reveal/markdown/markdown.esm.js'
+
+			const slides = new Array();
+			slides["3_52"] = slide_52;
+
+			let active_slide;
+			Reveal.addEventListener('slidechanged', function(event) {
+				if(active_slide) active_slide.close();
+				var sectionID = Reveal.getCurrentSlide().id;
+				active_slide = slides[sectionID]
+				if(active_slide) active_slide.open();
+			});
+
+			const fragment_events = [];
+			Reveal.addEventListener('fragmentshown', function(event) {
+				if(fragment_events[event.fragment.id])
+					fragment_events[event.fragment.id]();
+			});
+			Reveal.addEventListener('fragmenthidden', function(event) {
+				if(fragment_events[event.fragment.id])
+					fragment_events[event.fragment.id]();
+			});
+
+
+			Reveal.initialize({
+				touch: false,
+				slideNumber: 'c/t',
+				transition: 'none',
+				center: true,
+				hideAddressBar: true,
+				plugins: [RevealNotes, RevealMath, RevealHighlight, RevealMarkdown],
+				dependencies: [{
+						src: 'Reveal/external/external.js',
+						condition: function() {
+							return !!document.querySelector( '[data-external],[data-external-replace]' );
+						}
+					}],
+				width: 1920,
+				height: 1400
+			}).then(() => {
+
+				slide_52.init(
+					document.getElementById("anim_0"),
+					document.getElementById("anim_1"),
+					document.getElementById("anim_2")
+				)
+
+				Reveal.slide(3)
+			});
+
+
+		</script>
+
+	</body>
+
+</html>
