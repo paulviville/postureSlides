@@ -17,6 +17,8 @@
 				<section data-external="./Slides/1_projet.html"></section>
 				<section data-external="./Slides/2_51-53.html"></section>
 				<section data-external="./Slides/3_52.html" id="3_52"></section>
+				<section data-external="./Slides/4_LBS_DQS.html" id="4_LBS_DQS"></section>
+				<section data-external="./Slides/5_LBS_DQStwist.html" id="5_LBS_DQStwist"></section>
 				<!-- <section id="7_CMap0" data-external="./Slides/7_CMap0.html"></section> -->
 
 			</div>
@@ -27,6 +29,8 @@
 
 			import Slide from './Slides/Slide.js';
 			import {slide_52} from './Slides/3_52.js';
+			import {slide_LBS_DQS} from './Slides/4_LBS_DQS.js';
+			import {slide_LBS_DQStwist} from './Slides/5_LBS_DQStwist.js';
 
 			import RevealNotes from './Reveal/notes/notes.esm.js'
 			import RevealMath from './Reveal/math/math.esm.js'
@@ -35,6 +39,8 @@
 
 			const slides = new Array();
 			slides["3_52"] = slide_52;
+			slides["4_LBS_DQS"] = slide_LBS_DQS;
+			slides["5_LBS_DQStwist"] = slide_LBS_DQStwist;
 
 			let active_slide;
 			Reveal.addEventListener('slidechanged', function(event) {
@@ -78,7 +84,17 @@
 					document.getElementById("anim_2")
 				)
 
-				Reveal.slide(3)
+				slide_LBS_DQS.init(
+					document.getElementById("LBS"),
+					document.getElementById("DQS")
+				)
+
+				slide_LBS_DQStwist.init(
+					document.getElementById("LBStwist"),
+					document.getElementById("DQStwist")
+				)
+
+				Reveal.slide(5)
 			});
 
 
