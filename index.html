@@ -15,16 +15,19 @@
 
 				<section data-external="./Slides/0_title.html" data-visibility="uncounted"></section>
 				<section data-external="./Slides/0-1_input.html"></section>
+				<section data-external="./Slides/0-1-5.html"></section>
+				<section data-external="./Slides/fbx.html" id="fbx"></section>
 				<section data-external="./Slides/0-2_output.html"></section>
 				<section data-external="./Slides/3_52.html" id="3_52"></section>
-				<section data-external="./Slides/5_LBS_DQStwist.html" id="5_LBS_DQStwist"></section>
-				<section data-external="./Slides/4_LBS_DQS.html" id="4_LBS_DQS"></section>
+				<!-- <section data-external="./Slides/5_LBS_DQStwist.html" id="5_LBS_DQStwist"></section> -->
+				<!-- <section data-external="./Slides/4_LBS_DQS.html" id="4_LBS_DQS"></section> -->
 				<section data-external="./Slides/5-5_skinning.html"></section>
 				<section data-external="./Slides/6_physics.html"></section>
+				<section data-external="./Slides/7_physics.html"></section>
 				<section data-external="./Slides/1_projet.html"></section>
-				<section data-external="./Slides/13_myphd.html" id="13_myphd"></section>
+				<!-- <section data-external="./Slides/13_myphd.html" id="13_myphd"></section> -->
 				<section data-external="./Slides/2_51-53.html"></section>
-				<section data-external="./Slides/48_anime.html" id="48_anime"></section>
+				<!-- <section data-external="./Slides/48_anime.html" id="48_anime"></section> -->
 				<!-- <section id="7_CMap0" data-external="./Slides/7_CMap0.html"></section> -->
 
 			</div>
@@ -39,6 +42,7 @@
 			import {slide_LBS_DQStwist} from './Slides/5_LBS_DQStwist.js';
 			import {slide_Algo2D} from './Slides/13_myphd.js';
 			import {slide_anime} from './Slides/48_anime.js';
+			import {slide_fbx} from './Slides/fbx.js';
 
 			import RevealNotes from './Reveal/notes/notes.esm.js'
 			import RevealMath from './Reveal/math/math.esm.js'
@@ -51,6 +55,7 @@
 			slides["5_LBS_DQStwist"] = slide_LBS_DQStwist;
 			slides["13_myphd"] = slide_Algo2D;
 			slides["48_anime"] = slide_anime;
+			slides["fbx"] = slide_fbx;
 
 			let active_slide;
 			Reveal.addEventListener('slidechanged', function(event) {
@@ -88,38 +93,38 @@
 				height: 1400
 			}).then(() => {
 
-				slide_52.init(
-					document.getElementById("anim_0"),
-					document.getElementById("anim_1"),
-					document.getElementById("anim_2")
-				)
+				// slide_52.init(
+				// 	document.getElementById("anim_0"),
+				// 	document.getElementById("anim_1"),
+				// 	document.getElementById("anim_2")
+				// )
 
-				slide_LBS_DQS.init(
-					document.getElementById("LBS"),
-					document.getElementById("DQS")
-				)
+				// slide_LBS_DQS.init(
+				// 	document.getElementById("LBS"),
+				// 	document.getElementById("DQS")
+				// )
 
-				slide_LBS_DQStwist.init(
-					document.getElementById("LBStwist"),
-					document.getElementById("DQStwist")
-				)
+				// slide_LBS_DQStwist.init(
+				// 	document.getElementById("LBStwist"),
+				// 	document.getElementById("DQStwist")
+				// )
 
-				slide_LBS_DQStwist.init(
-					document.getElementById("LBStwist"),
-					document.getElementById("DQStwist")
-				)
+				// slide_LBS_DQStwist.init(
+				// 	document.getElementById("LBStwist"),
+				// 	document.getElementById("DQStwist")
+				// )
 
-				slide_Algo2D.init(
-					document.getElementById("algo2D_0"),
-					document.getElementById("algo2D_1"),
-					document.getElementById("algo2D_2"),
-					document.getElementById("algo2D_3")
-				)
+				// slide_Algo2D.init(
+				// 	document.getElementById("algo2D_0"),
+				// 	document.getElementById("algo2D_1"),
+				// 	document.getElementById("algo2D_2"),
+				// 	document.getElementById("algo2D_3")
+				// )
 
-				slides["48_anime"].init(
-						document.getElementById("animated_lungs")
+				slides["fbx"].init(
+						document.getElementById("fbx0")
 					);
-				// Reveal.slide(5)
+				Reveal.slide(3)
 			});
 
 
