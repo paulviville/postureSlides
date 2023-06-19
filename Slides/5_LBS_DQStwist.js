@@ -73,6 +73,10 @@ export const slide_LBS_DQStwist = new Slide(
 		const transformRoot = DualQuaternion.setFromRotationTranslation(new THREE.Quaternion, translation.clone().multiplyScalar(-1));
 		const transform1 = DualQuaternion.setFromRotationTranslation(rotation1.clone(), translation.clone());
 
+		// const e0 = new THREE.Euler(0, 0, 0)
+		const e = new THREE.Euler().setFromQuaternion(rotation)
+		const e1 = new THREE.Euler().setFromQuaternion(rotation1)
+		console.log(e, e1)
 		const key0 = new Key(0, transform);
 		const key1 = new Key(100, transform1);
 		const keyRoot = new Key(0, transformRoot);

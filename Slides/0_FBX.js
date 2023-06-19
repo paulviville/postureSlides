@@ -11,13 +11,13 @@ import * as Lung3 from '../Files/anim3_files.js';
 import {Clock} from '../CMapJS/Libs/three.module.js';
 
 import {glRenderer, ambiantLightInt, pointLightInt} from './parameters.js';
-import {FBXLoader} from '../CMapJS/Libs/FBXLoader.js';
+import {FBXLoader} from '../FBXLoader.js';
 
 export const slide_fbx0 = new Slide(
 	function(DOM_hexmesh)
 	{
 		this.camera = new THREE.PerspectiveCamera(45, DOM_hexmesh.width / DOM_hexmesh.height, 0.1, 1000.0);
-		this.camera.position.set(0, 400,540);
+		this.camera.position.set(100, 200,300);
 		
 		const surfaceLayer = 0;
 		const meshLayer = 1;
@@ -25,7 +25,8 @@ export const slide_fbx0 = new Slide(
 		const contextInput = DOM_hexmesh.getContext('2d');
 
 		const orbitControlsInput = new OrbitControls(this.camera, DOM_hexmesh);
-
+		orbitControlsInput.target.set(0, 100, 0)
+		orbitControlsInput.update()
 		this.scene = new THREE.Scene()
 		const ambiantLight = new THREE.AmbientLight(0xFFFFFF, 0.9);
 		const pointLight = new THREE.PointLight(0xFFFFFF, 0.9);
@@ -54,29 +55,31 @@ export const slide_fbx0 = new Slide(
 
 		const scene = this.scene
 		const loader = new FBXLoader();
-		loader.load( '../Files/SwingDancing.fbx', function ( object ) {
+				loader.load( './Samba Dancing.fbx', function ( object ) {
 
-			mixer = new THREE.AnimationMixer( object );
+					mixer = new THREE.AnimationMixer( object );
 
-			const action = mixer.clipAction( object.animations[ 0 ] );
-			action.play();
+					const action = mixer.clipAction( object.animations[ 0 ] );
+					action.play();
 
-			object.traverse( function ( child ) {
+					object.traverse( function ( child ) {
 
-				if ( child.isMesh ) {
+						if ( child.isMesh ) {
 
-					child.castShadow = true;
-					child.receiveShadow = true;
+							child.castShadow = true;
+							child.receiveShadow = true;
 
-				}
+						}
 
-			} );
+					} );
 
-			console.log(object)
+					let skeleton = new THREE.SkeletonHelper( object );
+					skeleton.visible = true;
+					object.visible = false
+					scene.add( skeleton );
+					scene.add( object );
 
-			scene.add( object );
-
-		} );
+				} );
 
 
 
@@ -86,8 +89,7 @@ export const slide_fbx0 = new Slide(
 			if(this.running){
 
 				const delta = this.clock.getDelta();
-				if ( mixer ) mixer.update( this.time );
-				console.log(mixer)
+				if ( mixer ) mixer.update( delta );
 
 				glRenderer.setSize(DOM_hexmesh.width, DOM_hexmesh.height);
 				this.time += delta * this.on;
