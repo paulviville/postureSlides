@@ -385,6 +385,7 @@ export const slide_anime = new Slide(
 				glRenderer.setSize(DOM_hexmesh.width, DOM_hexmesh.height);
 				this.time += this.clock.getDelta() * this.on;
 				this.vesselsVol.material.uniforms.timer.value = (1+Math.sin(this.time*0.6))/2;
+				this.group.setRotationFromAxisAngle(axis, Math.PI + this.time * 0.1);
 
 				this.camera.layers.enable(surfaceLayer);
 				this.camera.layers.enable(meshLayer);
